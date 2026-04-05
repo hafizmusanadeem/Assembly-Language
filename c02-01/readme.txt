@@ -44,4 +44,20 @@ Data Segment: Where the data is stored that is being used in the code.
 Code Segment: Where the code is stored of a running program
 
 Data Segment and Code Segment are just comments added for better readability of the code.
+
+
+
+Error in the code:
+The whole register ax (2 bytes) is being used while the data segment is using a byte.
+
+Because we're using ax, the register will store 16 bits (2 bytes) into memory.
+
+But problem is that we're defining 1 byte only by the keyword "db" and the register is storing 2 bytes, so it will store the next value as well in the accumulator register.
+
+
+Solution:
+
+dw should have used to define the values when the value needed to be stored in the ax register.
+
+db should have used to define the value when part of the accumulator register is defined. "al" or "ah" where al stands for accumulator lower and ah stands for accumulator higher.
 ---
